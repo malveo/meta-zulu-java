@@ -7,9 +7,9 @@ DESCRIPTION = "This the Embedded JRE for the i686/x64 bit Intel architecture fro
  Embedded commercial offerings."
 
 PV = "1.8.0"
-PV_UPDATE = "252"
-VERSION = "8.46.0.19-ca"
-BUILD_NUMBER = "8.0.252"
+PV_UPDATE = "262"
+VERSION = "8.48.0.51-ca"
+BUILD_NUMBER = "8.0.262"
 
 SUFFIX_x86-64 = "linux_x64"
 SUFFIX_x86 = "linux_i686"
@@ -43,17 +43,16 @@ ALTERNATIVE_PRIORITY[java] = "100"
 do_fetch[prefuncs] += "fetch_checksums"
 python fetch_checksums() {
     if d.getVar("SUFFIX") == "linux_i686":
-      d.setVarFlag("SRC_URI", "md5sum", "ca5afb0fc51c774fd1e09ca07895b3d4")
-      d.setVarFlag("SRC_URI", "sha256sum", "01e47bf6b59b7af59ad6bac0793b9761342aa7d46dee229f70970e80a14806fc")
+      d.setVarFlag("SRC_URI", "sha256sum", "25c36b269fa366fa3b2cd67a4345b4814cb41dfa38537efcec4a9c72464986e4")
       return
     if d.getVar("SUFFIX") == "linux_x64":
-      d.setVarFlag("SRC_URI", "md5sum", "1307536262df126a414ac8df9b0f6c52")
-      d.setVarFlag("SRC_URI", "sha256sum", "7700baf0019bdaac7da95e11ad7e36752a90b117214e75c270c73c4a362c6d5a")
+      d.setVarFlag("SRC_URI", "sha256sum", "ecebe64f2acde5477c0856d2b57738b19a6e05726e0c7bbb696ac10484bb43bd")
       return
     bb.error("Could not find remote $SUFFIX_ARCH")
 }
 
 do_install () {
   install -d -m 0755 ${D}${datadir}/zulu-${PV}_${PV_UPDATE}
-  cp -a ${S}/zulu${VERSION}-jre${BUILD_NUMBER}-${SUFFIX}/* ${D}${datadir}/zulu-${PV}_${PV_UPDATE}
+  cp -a ${S}/zulu${VERSION}-jre${BUILD_NUMBER}-${SUFFIX}/* ${D}${datadir}/zulu-${PV}_${PV_UPDATE}/
+  chown -R root:root ${D}${datadir}/zulu-${PV}_${PV_UPDATE}/
 }
