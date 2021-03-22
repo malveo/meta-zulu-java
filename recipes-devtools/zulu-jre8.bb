@@ -7,9 +7,9 @@ DESCRIPTION = "This the Embedded JRE for the i686/x64 bit Intel architecture fro
  Embedded commercial offerings."
 
 PV = "1.8.0"
-PV_UPDATE = "275"
-VERSION = "8.50.0.51-ca"
-BUILD_NUMBER = "8.0.275"
+PV_UPDATE = "282"
+VERSION = "8.52.0.23-ca"
+BUILD_NUMBER = "8.0.282"
 
 SUFFIX_x86-64 = "linux_x64"
 SUFFIX_x86 = "linux_i686"
@@ -43,10 +43,10 @@ ALTERNATIVE_PRIORITY[java] = "100"
 do_fetch[prefuncs] += "fetch_checksums"
 python fetch_checksums() {
     if d.getVar("SUFFIX") == "linux_i686":
-      d.setVarFlag("SRC_URI", "sha256sum", "90e172956246961fd56e58c1d49bbac3f972e14aa304c293880a89f91e2f9cd1")
+      d.setVarFlag("SRC_URI", "sha256sum", "d68bd05d36a4da4774a5211eaca2870eda632410df19fe1dabb5adf9906c54c3")
       return
     if d.getVar("SUFFIX") == "linux_x64":
-      d.setVarFlag("SRC_URI", "sha256sum", "facc4cfd8a084d87fcba915c2d8f40fa67937e3e61b2da2079716af8ce315d3a")
+      d.setVarFlag("SRC_URI", "sha256sum", "4662367ab249716b5462a738c10322cdf77b29e99d7305e46563c2ef568469ec")
       return
     bb.error("Could not find remote $SUFFIX_ARCH")
 }
